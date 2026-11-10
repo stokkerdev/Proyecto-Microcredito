@@ -6,7 +6,7 @@
 - [x] Servicios mock separados para autenticación, solicitudes, préstamos, pagos, políticas y usuarios.
 - [x] Datos mock en COP, fechas día/mes/año y roles de la cooperativa.
 - [x] Redux Toolkit con sesión de usuario, rol, token y estado de interfaz.
-- [x] Login simulado con redirección al portal del solicitante o al portal interno.
+- [x] Login simulado que recibe solo el correo, resuelve automáticamente el rol asociado y redirige al portal correspondiente.
 - [x] Rutas protegidas por sesión y rol, pantalla de acceso restringido y redirección a login.
 - [x] ApplicantLayout mobile-first con barra inferior de Inicio, Mi solicitud, Mi préstamo y Ayuda.
 - [x] InternalLayout con Sider colapsable, búsqueda, alertas, perfil y menú filtrado por rol.

@@ -16,8 +16,8 @@ Esta fase convierte el prototipo de solicitud en una base navegable para la plat
 
 ## Decisiones de UX
 
-El solicitante ve una tarea principal por pantalla, navegación inferior en móvil y controles grandes. El personal interno obtiene una navegación operativa con búsqueda, alertas, perfil y menú filtrado por rol. Los estados siempre incluyen icono y texto, nunca dependen solo del color. La sesión mock se conserva en `sessionStorage` y deberá reemplazarse por el flujo JWT real cuando exista backend.
+El solicitante ve una tarea principal por pantalla, navegación inferior en móvil y controles grandes. El personal interno obtiene una navegación operativa con búsqueda, alertas, perfil y menú filtrado por rol. Los estados siempre incluyen icono y texto, nunca dependen solo del color. El login recibe únicamente el correo: el servicio mock busca la cuenta y devuelve el rol asociado; con backend, esa relación vendrá en la respuesta de autenticación junto con el JWT. La sesión mock se conserva en `sessionStorage` y deberá reemplazarse por el flujo JWT real cuando exista backend.
 
 ## Alcance mock
 
-El login permite explorar cada rol sin contraseña. Solicitudes, préstamo, pagos, políticas y auditoría usan datos ficticios. No se implementan todavía cálculos de cuotas, decisiones financieras automáticas, carga de documentos ni persistencia real.
+El login permite explorar cada perfil usando un correo de demostración, sin selector manual de rol ni contraseña. Solicitudes, préstamo, pagos, políticas y auditoría usan datos ficticios. No se implementan todavía cálculos de cuotas, decisiones financieras automáticas, carga de documentos ni persistencia real.
