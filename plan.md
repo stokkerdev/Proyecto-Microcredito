@@ -20,4 +20,8 @@ El solicitante ve una tarea principal por pantalla, navegación inferior en móv
 
 ## Alcance mock
 
-El login permite explorar cada perfil usando un correo de demostración, sin selector manual de rol ni contraseña. Solicitudes, préstamo, pagos, políticas y auditoría usan datos ficticios. No se implementan todavía cálculos de cuotas, decisiones financieras automáticas, carga de documentos ni persistencia real.
+El login permite explorar cada perfil usando un correo de demostración, sin selector manual de rol ni contraseña. Solicitudes, préstamo, pagos, políticas y auditoría usan datos ficticios. El cronograma separa capital, interés, total, saldo y estado de cada cuota. La reconsideración exige una explicación mínima de 30 caracteres y admite soportes opcionales. Los reportes muestran indicadores agregados de portafolio y equidad sin exponer datos personales.
+
+## Login real pendiente
+
+El frontend ya centraliza el login en `authService`, pero hoy usa cuentas mock. Para consultar correo y contraseña contra la base de datos se necesitan en backend un endpoint de autenticación, comparación de `passwordHash` con bcrypt, JWT firmado, endpoint de sesión/perfil y middleware de autorización por rol. El navegador nunca debe consultar MongoDB directamente ni recibir hashes de contraseña.

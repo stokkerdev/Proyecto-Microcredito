@@ -1,4 +1,4 @@
-import { BellOutlined, DashboardOutlined, FileSearchOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileOutlined, SafetyCertificateOutlined, SearchOutlined, SettingOutlined } from "@ant-design/icons";
+import { BellOutlined, DashboardOutlined, FileSearchOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileOutlined, BarChartOutlined, SafetyCertificateOutlined, SearchOutlined } from "@ant-design/icons";
 import { Avatar, Button, Input, Layout, Menu, Space, Tag } from "antd";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ const menuItems = [
   { key: "/internal/applications", roles: ["oficial_credito", "analista_riesgo", "administrativo"], icon: <FileSearchOutlined />, label: <NavLink to="/internal/applications">Solicitudes</NavLink> },
   { key: "/internal/policies", roles: ["analista_riesgo", "comite_supervisor"], icon: <SafetyCertificateOutlined />, label: <NavLink to="/internal/policies">Políticas</NavLink> },
   { key: "/internal/audit", roles: ["administrativo", "comite_supervisor"], icon: <ProfileOutlined />, label: <NavLink to="/internal/audit">Auditoría</NavLink> },
+  { key: "/internal/reports", roles: ["administrativo", "comite_supervisor"], icon: <BarChartOutlined />, label: <NavLink to="/internal/reports">Reportes</NavLink> },
 ];
 
 export default function InternalLayout() {
