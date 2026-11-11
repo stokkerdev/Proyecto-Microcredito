@@ -12,12 +12,15 @@
 - [x] InternalLayout con Sider colapsable, búsqueda, alertas, perfil y menú filtrado por rol.
 - [x] Componentes StatusChip, JustificationBlock, AuditTimeline, ConfirmModal, PageHeader y EmptyState.
 - [x] Páginas mock de solicitud, préstamo, pagos, políticas, auditoría y resumen operativo.
+- [x] Vista del Oficial de Crédito con indicadores de apoyo, política aplicada, trazabilidad y decisión humana.
+- [x] Justificación obligatoria de mínimo 30 caracteres y condiciones obligatorias para aprobación condicionada.
 
 ## Próximos incrementos
 
 - [ ] Conectar los servicios con endpoints reales cuando exista el backend.
 - [ ] Implementar el formulario guiado de nueva solicitud dentro de `ApplicationPage` con guardado de borrador.
 - [ ] Incorporar carga y validación de documentos.
-- [ ] Añadir evaluación de riesgo como apoyo a la decisión humana.
-- [ ] Construir decisiones justificadas, reconsideraciones y confirmaciones irreversibles.
+- [ ] Conectar la evaluación de riesgo y el registro de decisiones con endpoints reales.
+- [ ] Incorporar reconsideraciones y confirmaciones irreversibles.
 - [ ] Añadir pruebas unitarias y de navegación por rol.
+- [ ] Coordinar con backend los endpoints autenticados para listar solicitudes, consultar evaluaciones y registrar `LoanDecision`/`AuditLog`.
