@@ -6,10 +6,16 @@ import { clearSession } from "./store/authSlice";
 
 export default function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const handleUnauthorized = () => dispatch(clearSession());
     window.addEventListener("microcredito:unauthorized", handleUnauthorized);
     return () => window.removeEventListener("microcredito:unauthorized", handleUnauthorized);
   }, [dispatch]);
-  return <BrowserRouter><AppRoutes /></BrowserRouter>;
+
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
