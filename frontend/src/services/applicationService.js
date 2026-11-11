@@ -1,5 +1,7 @@
-import { mockApplications } from "../mocks/data";
 import client from "../api/client";
+import { mockApplications } from "../mocks/data";
+
+const wait = (data, delay = 300) => new Promise((resolve) => setTimeout(() => resolve(data), delay));
 
 export async function createLoanApplication(payload) {
   const response = await client.post("/applications", payload);
@@ -8,8 +10,6 @@ export async function createLoanApplication(payload) {
   }
   return response.data.data;
 }
-
-const wait = (data, delay = 300) => new Promise((resolve) => setTimeout(() => resolve(data), delay));
 
 export const applicationService = {
   list: () => wait(mockApplications),

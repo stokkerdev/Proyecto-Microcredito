@@ -12,7 +12,6 @@ export default function App() {
     window.addEventListener("microcredito:unauthorized", handleUnauthorized);
     return () => window.removeEventListener("microcredito:unauthorized", handleUnauthorized);
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       <AppRoutes />

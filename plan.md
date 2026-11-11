@@ -21,3 +21,9 @@ El solicitante ve una tarea principal por pantalla, navegación inferior en móv
 ## Alcance mock
 
 El login permite explorar cada perfil usando un correo de demostración, sin selector manual de rol ni contraseña. Solicitudes, préstamo, pagos, políticas y auditoría usan datos ficticios. No se implementan todavía cálculos de cuotas, decisiones financieras automáticas, carga de documentos ni persistencia real.
+
+## Vista del Oficial de Crédito
+
+La ruta `/internal/applications/:id/review` presenta la información del solicitante, indicadores de capacidad, relación deuda/ingreso, política aplicada, observaciones y trazabilidad. El resultado se elige entre aprobación, aprobación con condiciones o rechazo. La justificación es obligatoria y exige mínimo 30 caracteres; la aprobación con condiciones exige además describir las condiciones.
+
+La vista usa `riskService` con la misma forma de datos prevista por `RiskEvaluation` y `LoanDecision`. El backend sincronizado actualmente expone la recepción pública de solicitudes, pero todavía no expone endpoints internos para listar solicitudes, guardar evaluaciones o registrar decisiones; por eso esas operaciones permanecen mock hasta que el equipo backend publique ese contrato.
