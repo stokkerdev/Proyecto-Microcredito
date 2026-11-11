@@ -5,30 +5,52 @@ import ApplicantLayout from "../layouts/ApplicantLayout";
 import InternalLayout from "../layouts/InternalLayout";
 import ApplicantHomePage from "../pages/applicant/ApplicantHomePage";
 import ApplicationPage from "../pages/applicant/ApplicationPage";
-import LoanPage from "../pages/applicant/LoanPage";
-import HelpPage from "../pages/applicant/HelpPage";
+import NewApplicationPage from "../pages/applicant/NewApplicationPage";
 import PaymentSchedulePage from "../pages/applicant/PaymentSchedulePage";
 import ReconsiderationPage from "../pages/applicant/ReconsiderationPage";
+import LoanPage from "../pages/applicant/LoanPage";
+import HelpPage from "../pages/applicant/HelpPage";
 import InternalDashboardPage from "../pages/internal/InternalDashboardPage";
 import ApplicationsPage from "../pages/internal/ApplicationsPage";
+import RiskEvaluationPage from "../pages/internal/RiskEvaluationPage";
 import PoliciesPage from "../pages/internal/PoliciesPage";
 import AuditPage from "../pages/internal/AuditPage";
 import ReportsPage from "../pages/internal/ReportsPage";
 import UnauthorizedPage from "../pages/shared/UnauthorizedPage";
 
-function ProtectedRoute() {
-  const token = useSelector((state) => state.auth.token);
-  const location = useLocation();
-  return token ? <Outlet /> : <Navigate to="/login" replace state={{ from: location }} />;
-}
-
-function RoleRoute({ roles }) {
-  const role = useSelector((state) => state.auth.user?.role);
-  return roles.includes(role) ? <Outlet /> : <Navigate to="/sin-permisos" replace />;
-}
+function ProtectedRoute() { const token = useSelector((state) => state.auth.token); const location = useLocation(); return token ? <Outlet /> : <Navigate to="/login" replace state={{ from: location }} />; }
+function RoleRoute({ roles }) { const role = useSelector((state) => state.auth.user?.role); return roles.includes(role) ? <Outlet /> : <Navigate to="/sin-permisos" replace />; }
 
 export default function AppRoutes() {
- return <Routes><Route path="/login" element={<LoginPage />} /><Route element={<ProtectedRoute />}><Route element={<RoleRoute roles={["solicitante"]} />}><Route path="/applicant" element={<ApplicantLayout />}><Route index element={<ApplicantHomePage />} /><Route path="application" element={<ApplicationPage />} /><Route path="application/reconsideration" element={<ReconsiderationPage />} /><Route path="loan" element={<LoanPage />} /><Route path="loan/schedule" element={<PaymentSchedulePage />} /><Route path="help" element={<HelpPage />} /></Route></Route><Route element={<RoleRoute roles={["oficial_credito", "analista_riesgo", "administrativo", "comite_supervisor"]} />}><Route path="/internal" element={<InternalLayout />}><Route index element={<InternalDashboardPage />} /><Route path="applications" element={<ApplicationsPage />} /><Route path="applications/:id" element={<ApplicationsPage />} /><Route path="policies" element={<PoliciesPage />} /><Route path="audit" element={<AuditPage />} /><Route element={<RoleRoute roles={["administrativo", "comite_supervisor"]} />}><Route path="reports" element={<ReportsPage />} /></Route></Route></Route></Route><Route path="/sin-permisos" element={<UnauthorizedPage />} /><Route path="/" element={<HomeRedirect />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes>;
+  return <Routes>
+    <Route path="/login" element={<LoginPage />} />
+    <Route element={<ProtectedRoute />}>
+      <Route element={<RoleRoute roles={["solicitante"]} />}>
+        <Route path="/applicant" element={<ApplicantLayout />}>
+          <Route index element={<ApplicantHomePage />} />
+          <Route path="application" element={<ApplicationPage />} />
+          <Route path="application/new" element={<NewApplicationPage />} />
+          <Route path="application/reconsideration" element={<ReconsiderationPage />} />
+          <Route path="loan" element={<LoanPage />} />
+          <Route path="loan/schedule" element={<PaymentSchedulePage />} />
+          <Route path="help" element={<HelpPage />} />
+        </Route>
+      </Route>
+      <Route element={<RoleRoute roles={["oficial_credito", "analista_riesgo", "administrativo", "comite_supervisor"]} />}>
+        <Route path="/internal" element={<InternalLayout />}>
+          <Route index element={<InternalDashboardPage />} />
+          <Route path="applications" element={<ApplicationsPage />} />
+          <Route path="applications/:id" element={<ApplicationsPage />} />
+          <Route path="applications/:id/review" element={<RiskEvaluationPage />} />
+          <Route path="policies" element={<PoliciesPage />} />
+          <Route path="audit" element={<AuditPage />} />
+          <Route element={<RoleRoute roles={["administrativo", "comite_supervisor"]} />}><Route path="reports" element={<ReportsPage />} /></Route>
+        </Route>
+      </Route>
+    </Route>
+    <Route path="/sin-permisos" element={<UnauthorizedPage />} />
+    <Route path="/" element={<HomeRedirect />} />
+    <Route path="*" element={<Navigate to="/" replace />} />
+  </Routes>;
 }
-
 function HomeRedirect() { const role = useSelector((state) => state.auth.user?.role); return <Navigate to={role === "solicitante" ? "/applicant" : role ? "/internal" : "/login"} replace />; }

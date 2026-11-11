@@ -11,7 +11,9 @@
 - [x] ApplicantLayout mobile-first con barra inferior de Inicio, Mi solicitud, Mi préstamo y Ayuda.
 - [x] InternalLayout con Sider colapsable, búsqueda, alertas, perfil y menú filtrado por rol.
 - [x] Componentes StatusChip, JustificationBlock, AuditTimeline, ConfirmModal, PageHeader y EmptyState.
-- [x] Páginas mock de solicitud, préstamo, pagos, políticas, auditoría y resumen operativo.
+- [x] Páginas de solicitud, préstamo, pagos, políticas, auditoría y resumen operativo.
+- [x] Vista del Oficial de Crédito con indicadores de apoyo, política aplicada, trazabilidad y decisión humana.
+- [x] Justificación obligatoria de mínimo 30 caracteres y condiciones obligatorias para aprobación condicionada.
 - [x] Pantalla de cronograma de pagos con desglose de capital, interés, saldo, vencimiento y estado de cada cuota.
 - [x] Flujo de reconsideración para rechazos con explicación mínima de 30 caracteres y soportes opcionales.
 - [x] Panel de reportes de portafolio y equidad restringido a administración y comité supervisor.
@@ -19,10 +21,10 @@
 ## Próximos incrementos
 
 - [ ] Conectar los servicios con endpoints reales cuando exista el backend.
-- [ ] Implementar el formulario guiado de nueva solicitud dentro de `ApplicationPage` con guardado de borrador.
+- [ ] Implementar el formulario guiado de nueva solicitud con guardado de borrador.
 - [ ] Incorporar carga y validación de documentos.
-- [ ] Añadir evaluación de riesgo como apoyo a la decisión humana.
-- [ ] Construir decisiones justificadas y confirmaciones irreversibles.
+- [ ] Conectar evaluación de riesgo y registro de decisiones con endpoints reales.
+- [ ] Construir decisiones justificadas, reconsideraciones y confirmaciones irreversibles en backend.
 - [ ] Añadir pruebas unitarias y de navegación por rol.
 - [ ] Implementar autenticación real con correo, contraseña, bcrypt, JWT, sesión/perfil y autorización por rol.
 - [ ] Conectar cronograma, reconsideraciones y reportes a endpoints reales cuando backend los publique.
